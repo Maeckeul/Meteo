@@ -7,12 +7,12 @@
         <h1>Bienvenue sur la météo des villes !</h1>
         <ul class="list-group">
 
-            {% for city in citys %}
+            {% for data in weatherData %}
 
             <li class="list-group-item">
                 <img src="{{ asset('/images/snow.png') }}">
-                <p>{{ city.city }}</p>
-                <p>{{ city.date }} : {{ city.min }} / {{ city.max }}</p>  
+                <p>{{ data.city }}</p>
+                <p>{{ data.date }} : {{ data.min }}° / {{ data.max }}°</p>  
             </li>
 
             {% endfor %}
