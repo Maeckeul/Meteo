@@ -1,1 +1,19 @@
-Widget
+{% set widgetWeatherData = app.session.get('selected_city') %}
+
+{% if widgetWeatherData is not empty %}
+
+<div class="card">
+    <img src="{{ asset('images/' ~ widgetWeatherData.weather ~ '.png') }}" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title">{{ widgetWeatherData.city }}</h5>
+      <p class="card-text">{{ widgetWeatherData.date | date('d/m') }} : {{ widgetWeatherData.min }}°C / {{ widgetWeatherData.max }}°C</p>
+    </div>
+</div>
+
+{% else %}
+
+    <a href="{{ path('homepage') }}">Sélectionner une ville sur la page d'acceuil</a>
+
+{% endif %}
+
+

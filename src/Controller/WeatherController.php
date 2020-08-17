@@ -22,13 +22,33 @@ class WeatherController extends AbstractController {
      * 
      * @Route("/", name="homepage")
      */
-    public function index() {
+    public function homepage() {
 
         $weatherData = $this->weatherModel->getWeatherData();
 
         return $this->render("weather/homepage.html.twig", [
             'weatherData' => $weatherData,
         ]);
+    }
+
+    /**
+     * Page des montagnes
+     * 
+     * @Route("/mountain", name="mountain")
+     */
+    public function montagneWeather() {
+
+        return $this->render("weather/mountain.html.twig");
+    }
+
+    /**
+     * Page des plages
+     * 
+     * @Route("/beach", name="beach")
+     */
+    public function beachWeather() {
+
+        return $this->render("weather/beach.html.twig");
     }
 
     /**
@@ -47,15 +67,5 @@ class WeatherController extends AbstractController {
         $this->session->set('selected_city', $weatherData);
 
         return $this->redirectToRoute('homepage');
-    }
-
-    /**
-     * Page Météo des Montagnes
-     * 
-     * @Route("/montagne"), name="montagne"
-     */
-    public function montagneWeather() {
-
-        return $this->render('weather/montagne.html.twig');
     }
 }

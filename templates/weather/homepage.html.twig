@@ -2,23 +2,20 @@
 
 {% block body %}
 
-<div class="row">
-    <div class="col-xs-12">
-        <h1>Bienvenue sur la météo des villes !</h1>
-        <ul class="list-group">
+    <h1>Météo des villes</h1>
 
-            {% for data in weatherData %}
+    {% for cityId, data in weatherData %}
 
-            <li class="list-group-item">
-                <img src="{{ asset('/images/snow.png') }}">
-                <p>{{ data.city }}</p>
-                <p>{{ data.date }} : {{ data.min }}° / {{ data.max }}°</p>  
-            </li>
-
-            {% endfor %}
-
-        </ul>
+    <div class="media mt-5">
+        <img src="{{ asset('images/' ~ data.weather ~ '.png') }}" class="mr-3" width="80">
+        <div class="media-body">
+            <h5 class="mt-0">
+                <a href="{{ path('city_select', {'id' : cityId}) }}">{{ data.city }}</a>
+            </h5>
+            {{data.date | date('d/m') }} : {{ data.min }}°C / {{ data.max }}°C
+        </div>
     </div>
-</div>
+
+    {% endfor %}
 
 {% endblock %}
