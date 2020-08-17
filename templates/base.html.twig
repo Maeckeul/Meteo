@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html>
+
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Météo{% endblock %}</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('css/meteo.css') }}">
         {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
+
     <body>
+
+        <header class="container">
+            <nav class="nav">
+                <ul class="nav nav-pills">
+                    <li class="">
+                        <a href="">Accueil</a>
+                    </li>
+                    <li class="">
+                        <a href="">Montagne</a>
+                    </li>
+                    <li class="">
+                        <a href="">Plages</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
         {% block body %}{% endblock %}
+        </main>
+        
         {% block javascripts %}{% endblock %}
     </body>
 </html>
